@@ -1,6 +1,6 @@
-# cq-multi-profiles
+# cq-multisection-sweep
 
-Mulitple profiles using CadQuery sweep, current 2 profiles a circle(4) and circle(2)
+Mulitple sections using CadQuery sweep, current 2 a circle(4) and circle(2).
 
 ## Info
 Based on: https://github.com/CadQuery/cadquery/issues/507#issuecomment-729078867
