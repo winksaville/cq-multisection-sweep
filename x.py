@@ -2,7 +2,7 @@
 import cadquery as cq
 from cadquery.vis import show
 
-dia = 2
+radius = 2
 x = 50
 y = 0
 z = -5
@@ -12,18 +12,19 @@ path= cq.Workplane("XY").moveTo(x, 0).spline(pts)
 #path= cq.Workplane("XY").spline(pts)
 
 loc0 = [path.val().locationAt(0)]
+print(f"loc0: {loc0[0].toTuple()}")
 loc1 = [path.val().locationAt(1)]
-print(f"loc0: {loc0[0].toTuple()}, loc1: {loc1[0].toTuple()}")
+print(f"loc1: {loc1[0].toTuple()}")
 
 #c2cir = cq.Workplane.pushPoints(loc0).circle(2)
 c2wp = cq.Workplane("XY")
 #show(c2wp, title="c2wp", edges=True, alpha=0.5) # empty
 c2pts = c2wp.pushPoints(loc0)
 #show(c2pts, title="c2pts", edges=True, alpha=0.5) # empty
-c2cir = c2pts.circle(2)
+c2cir = c2pts.circle(radius)
 show(c2cir, title="c2cir", edges=True, alpha=0.5) # shows just c2cir
 
-c4cir = c2cir.pushPoints(loc1).circle(4)
+c4cir = c2cir.pushPoints(loc1).circle(radius * 2)
 show(c4cir, title="c4cir-no-consolidateWires", edges=True, alpha=0.5) # shows just c4cir
 #c4cir = c4cir.consolidateWires() # unnecessary, no visible effect on s
 #show(c4cir, title="c4cir-consolidateWires", edges=True, alpha=0.5) # Shows both circles
